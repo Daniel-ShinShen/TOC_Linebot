@@ -1,7 +1,7 @@
 import os
 import sys
 
-from flask import Flask, request, abort
+from flask import Flask, request, abort, send_file
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -49,12 +49,6 @@ machine = TocMachine(
             "source": "user",
             "dest": "mcdnd",
             "conditions": "is_going_to_mcdnd",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state3",
-            "conditions": "is_going_to_state3",
         },
         {
             "trigger": "advance",
@@ -122,7 +116,7 @@ machine = TocMachine(
             "dest": "kfc",
             "conditions": "is_going_to_recommand",
         },
-        {"trigger": "go_back", "source": ["introduction", "state2","state3","kfc","mcdnd","breakfast","lunch","dinner","l_choose","b_choose","l_choose"], "dest": "user"},
+        {"trigger": "go_back", "source": ["introduction", "show_fsm_pic", "state2","state3","kfc","mcdnd","breakfast","lunch","dinner","l_choose","b_choose","d_choose"], "dest": "user"},
 
     ],
     initial="user",

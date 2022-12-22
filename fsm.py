@@ -14,6 +14,7 @@ from linebot.models import (
 from transitions.extensions import GraphMachine
 from initial import app
 from utils import send_text_message,send_button_message,send_button_carousel_l,send_button_carousel_bf,send_button_carousel_d,line_bot_api
+#import pyimgur
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -48,15 +49,15 @@ class TocMachine(GraphMachine):
     
     def is_going_to_b_choose(self, event):
         text = event.message.text
-        return text.lower() == '就選這個吧'
+        return text == '就選這個吧'
 
     def is_going_to_l_choose(self, event):
         text = event.message.text
-        return text.lower() == '就選這個吧'
+        return text == '就選這個吧'
     
     def is_going_to_d_choose(self, event):
         text = event.message.text
-        return text.lower() == '就選這個吧'
+        return text == '就選這個吧'
     
     def is_going_to_recommand(self, event):
         text = event.message.text
@@ -73,7 +74,7 @@ class TocMachine(GraphMachine):
     def on_enter_introduction(self, event):
         print("I'm entering introduction")
         reply_token = event.reply_token
-        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\" 會有早餐、午餐、晚餐時段，再請依照推薦進行選擇~\n 請打\"fsm\"會輸出本系統fsm圖片"
+        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\"或\"go\" 會有早餐、午餐、晚餐時段，再請依照推薦進行選擇~\n 請打\"fsm\"會輸出本系統fsm圖片"
         #message_to_reply = FlexSendMessage("說明", message)
         #line_bot_api = LineBotApi('GB4Nbe46wQipUV1Jl88drMPiZusTljgsCNpLly8/SKnMno2Y7YzvPJ3Hg4MdIXCIOL5+XtTdOipJIEFWRGFYo7ioW8h6Bha3TojWwZmuUJAfIm7xX9/gnwTbeDvb00ySmCMXKhwutNsEj/747BMkFAdB04t89/1O/w1cDnyilFU=')
         line_bot_api.reply_message(reply_token,TextSendMessage(text=message))
@@ -94,13 +95,14 @@ class TocMachine(GraphMachine):
         send_button_carousel_bf(reply_token)
 
     def on_enter_b_choose(self, event):
-        print("I'm entering state2")
+        print("I'm entering b_choose")
         reply_token = event.reply_token
         message = "好的 早上吃好才有精神努力喔~"
         #message_to_reply = FlexSendMessage("說明", message)
         line_bot_api.reply_message(reply_token,TextSendMessage(text=message))
         self.go_back()
-    
+
+
     def on_enter_lunch(self, event):
         print("I'm entering state3")
         reply_token = event.reply_token
@@ -142,8 +144,6 @@ class TocMachine(GraphMachine):
         line_bot_api.reply_message(reply_token,TextSendMessage(text=message))
         self.go_back()
 
-    def on_exit_state1(self):
-        print('Leaving state1')
 
 
 
