@@ -24,5 +24,5 @@ QR code 加入好友
 ![](https://i.imgur.com/IPVI96X.jpg)
 
 
-## Fsm 結構圖
+## FSM 結構圖
 ![](https://i.imgur.com/22zqkjP.png)
