@@ -9,13 +9,17 @@
 
 ![](https://i.imgur.com/23yR1bW.png)
 
-QR code 加入好友
+請先加入好友~
+
+我的 QRCODE
 
 ![](https://i.imgur.com/Bu0MOkP.png)
+
 
 ### 功能
 1. 可以依早、午、晚餐偏好查詢，給予適合的餐廳連結
 2. 真的沒有想法時，可以進行餐廳推薦
+
 
 - 透過「說明」，可以知道如何操作本系統
 
