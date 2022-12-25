@@ -25,12 +25,10 @@ handler = WebhookHandler('f80fb07f8c69a68601586a99c1be4f5d')
 
 
 
-
-
 from transitions import Machine
 from fsm import TocMachine
 machine = TocMachine(
-    states=["user", "introduction", "eat", "kfc", "mcdnd", "breakfast", "lunch", "dinner", "l_choose", "b_choose", "d_choose"],
+    states=["user", "introduction", "eat", "kfc", "mcdnd", "breakfast", "lunch", "dinner", "l_choose", "b_choose", "d_choose","show_fsm_pic"],
     transitions=[
         {
             "trigger": "advance",
@@ -103,6 +101,12 @@ machine = TocMachine(
             "source": "lunch",
             "dest": "l_choose",
             "conditions": "is_going_to_l_choose",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "show_fsm_pic",
+            "conditions": "is_going_to_show_fsm_pic",
         },  
         {
             "trigger": "advance",
@@ -116,7 +120,7 @@ machine = TocMachine(
             "dest": "kfc",
             "conditions": "is_going_to_recommand",
         },
-        {"trigger": "go_back", "source": ["introduction", "show_fsm_pic", "state2","state3","kfc","mcdnd","breakfast","lunch","dinner","l_choose","b_choose","d_choose"], "dest": "user"},
+        {"trigger": "go_back", "source": ["introduction", "show_fsm_pic","kfc","mcdnd","breakfast","lunch","dinner","l_choose","b_choose","d_choose"], "dest": "user"},
 
     ],
     initial="user",

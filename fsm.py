@@ -14,7 +14,9 @@ from linebot.models import (
 from transitions.extensions import GraphMachine
 from initial import app
 from utils import send_text_message,send_button_message,send_button_carousel_l,send_button_carousel_bf,send_button_carousel_d,line_bot_api
-#import pyimgur
+import pyimgur
+channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -63,6 +65,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text == '有甚麼推薦的'
     
+    def is_going_to_show_fsm_pic(self, event):
+        text = event.message.text
+        return text == 'fsm'
+    
     def is_going_to_kfc(self, event):
         text = event.message.text
         return text == '肯德基' or text == '肯得基' or text == '肯德雞'
@@ -74,10 +80,19 @@ class TocMachine(GraphMachine):
     def on_enter_introduction(self, event):
         print("I'm entering introduction")
         reply_token = event.reply_token
-        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\"或\"go\" 會有早餐、午餐、晚餐時段，再請依照推薦進行選擇~\n 請打\"fsm\"會輸出本系統fsm圖片"
+        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\"或\"go\" 會有早餐、午餐、晚餐時段選擇，選取後再請依照推薦進行選擇~\n 請打\"fsm\"會輸出本系統fsm圖片"
         #message_to_reply = FlexSendMessage("說明", message)
         #line_bot_api = LineBotApi('GB4Nbe46wQipUV1Jl88drMPiZusTljgsCNpLly8/SKnMno2Y7YzvPJ3Hg4MdIXCIOL5+XtTdOipJIEFWRGFYo7ioW8h6Bha3TojWwZmuUJAfIm7xX9/gnwTbeDvb00ySmCMXKhwutNsEj/747BMkFAdB04t89/1O/w1cDnyilFU=')
         line_bot_api.reply_message(reply_token,TextSendMessage(text=message))
+        self.go_back()
+    ##
+    def on_enter_show_fsm_pic(self, event):
+        print("I'm entering show_fsm_pic")
+        reply_token = event.reply_token
+        line_bot_api = LineBotApi(channel_access_token)
+        line_bot_api.reply_message(reply_token,ImageSendMessage(
+                original_content_url=r'https://i.imgur.com/22zqkjP.png',
+                preview_image_url=r'https://i.imgur.com/22zqkjP.png'))
         self.go_back()
 
     def on_enter_eat(self, event):
@@ -88,7 +103,7 @@ class TocMachine(GraphMachine):
     
 
     def on_enter_breakfast(self, event):
-        print("I'm entering state2")
+        print("I'm entering breakfast")
         reply_token = event.reply_token
         message = "想要吃早餐"
         #message_to_reply = FlexSendMessage("說明", message)
@@ -104,7 +119,7 @@ class TocMachine(GraphMachine):
 
 
     def on_enter_lunch(self, event):
-        print("I'm entering state3")
+        print("I'm entering lunch")
         reply_token = event.reply_token
         send_button_carousel_l(reply_token)
 
