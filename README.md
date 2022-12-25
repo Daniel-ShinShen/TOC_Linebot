@@ -10,7 +10,8 @@
 ![](https://i.imgur.com/23yR1bW.png)
 
 
-請先加入好友~
+請先加入好友~  
+
 我的 QRCODE
 
 ![](https://i.imgur.com/Bu0MOkP.png)
