@@ -20,4 +20,4 @@
 
 
 ## Fsm 結構圖
-![]([https://i.imgur.com/2eoyCJr.png](https://i.imgur.com/22zqkjP.png))
+![](https://i.imgur.com/hyKlZan.png)
