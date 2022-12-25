@@ -80,7 +80,7 @@ class TocMachine(GraphMachine):
     def on_enter_introduction(self, event):
         print("I'm entering introduction")
         reply_token = event.reply_token
-        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\"或\"go\" 會有早餐、午餐、晚餐時段選擇，選取後再請依照推薦進行選擇~\n 請打\"fsm\"會輸出本系統fsm圖片"
+        message = "每餐吃什麼這個問題，從大學生活\n就開始啦！\n萬年不變的煩惱，由我來幫你解決!\n\n 請打 \"說明\" 會有使用資訊 \n 請打 \"肚子餓了\"或\"go\" 會有早餐、午餐、晚餐時段選擇，選取後再請依照推薦進行選擇~\n 請打 \"fsm\" 會輸出本系統fsm圖片"
         #message_to_reply = FlexSendMessage("說明", message)
         #line_bot_api = LineBotApi('GB4Nbe46wQipUV1Jl88drMPiZusTljgsCNpLly8/SKnMno2Y7YzvPJ3Hg4MdIXCIOL5+XtTdOipJIEFWRGFYo7ioW8h6Bha3TojWwZmuUJAfIm7xX9/gnwTbeDvb00ySmCMXKhwutNsEj/747BMkFAdB04t89/1O/w1cDnyilFU=')
         line_bot_api.reply_message(reply_token,TextSendMessage(text=message))
