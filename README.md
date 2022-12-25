@@ -9,6 +9,9 @@
 
 ![](https://i.imgur.com/23yR1bW.png)
 
+QR code 加入好友
+
+![](https://i.imgur.com/Bu0MOkP.png)
 
 ### 功能
 1. 可以依早、午、晚餐偏好查詢，給予適合的餐廳連結
@@ -20,4 +23,4 @@
 
 
 ## Fsm 結構圖
-![]([https://i.imgur.com/hyKlZan.png](https://i.imgur.com/22zqkjP.png))
+![](https://i.imgur.com/22zqkjP.png)
