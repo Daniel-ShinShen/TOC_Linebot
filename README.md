@@ -31,3 +31,8 @@
 
 ## FSM 結構圖
 ![](https://i.imgur.com/22zqkjP.png)
+
+## Reference
+[Pipenv](https://medium.com/@chihsuan/pipenv-更簡單-更快速的-python-套件管理工具-135a47e504f4)
+[TOC-Project-2020](https://github.com/NCKU-CCS/TOC-Project-2020)
+[Line line-bot-sdk-python](https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo)
