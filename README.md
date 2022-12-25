@@ -16,8 +16,8 @@
 
 - 透過「說明」，可以知道如何操作本系統
 
-![]([https://i.imgur.com/oVL2zkE.png](https://i.imgur.com/fRZ80ec.jpg)
+![](https://i.imgur.com/fRZ80ec.jpg)
 
 
 ## Fsm 結構圖
-![](https://i.imgur.com/hyKlZan.png)
+![]([https://i.imgur.com/hyKlZan.png](https://i.imgur.com/22zqkjP.png))
